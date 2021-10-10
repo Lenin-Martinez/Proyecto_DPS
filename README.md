@@ -1,8 +1,9 @@
 # Proyecto_DPS
 Proyecto grupal de materia DPS/ Universidad Don Bosco
 
+______________________________________________________________________________
 -- Integrantes --
-________________________________________________________________
+
 Aguilar Lara, Jose Alfredo  
 AL170536  
 G03T  
@@ -26,9 +27,11 @@ G03T
 
 ______________________________________________________________________________
 -- Enlace a github --
+
 https://github.com/Lenin-Martinez/Proyecto_DPS.git
 
 
 ______________________________________________________________________________
 -- Enlace a tablero trello fase 1 --
+
 https://trello.com/b/BiyFmUlg/primera-fase
