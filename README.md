@@ -24,11 +24,11 @@ RM162835
 G03T 
 
 
--- Enlace a github --
 ______________________________________________________________________________
+-- Enlace a github --
 https://github.com/Lenin-Martinez/Proyecto_DPS.git
 
 
--- Enlace a tablero trello fase 1 --
 ______________________________________________________________________________
+-- Enlace a tablero trello fase 1 --
 https://trello.com/b/BiyFmUlg/primera-fase
