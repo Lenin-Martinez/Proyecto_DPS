@@ -6,49 +6,49 @@ import { RectButton, ScrollView, TouchableOpacity } from 'react-native-gesture-h
 import { Value } from 'react-native-reanimated';
 import { Background } from '@react-navigation/elements';
 
-function Inicio({ navigation }) {
+function Inicio() {
   return (
     <View style={{ flex: 1, alignItems: 'center'}}>
 
         <ScrollView 
           horizontal
           style={{width: '90%', marginTop: 25}}>
-            <View style={styles.ImgPromoInicio}>
+            <View style={styles.ImgCentrado}>
               <Image 
                 source={require('./assets/img/LogoFF.png')}
                 style={{width: 290, height: 250, marginRight: 10}}>
               </Image>
             </View>
 
-            <View style={styles.ImgPromoInicio}>
+            <View style={styles.ImgCentrado}>
               <Image 
                 source={require('./assets/img/LogoFF.png')}
                 style={{width: 290, height: 250, marginRight: 10}}>
               </Image>
             </View>
 
-            <View style={styles.ImgPromoInicio}>
+            <View style={styles.ImgCentrado}>
               <Image 
                 source={require('./assets/img/LogoFF.png')}
                 style={{width: 290, height: 250, marginRight: 10}}>
               </Image>
             </View>
 
-            <View style={styles.ImgPromoInicio}>
+            <View style={styles.ImgCentrado}>
               <Image 
                 source={require('./assets/img/LogoFF.png')}
                 style={{width: 290, height: 250, marginRight: 10}}>
               </Image>
             </View>
 
-            <View style={styles.ImgPromoInicio}>
+            <View style={styles.ImgCentrado}>
               <Image 
                 source={require('./assets/img/LogoFF.png')}
                 style={{width: 290, height: 250, marginRight: 10}}>
               </Image>
             </View>
 
-            <View style={styles.ImgPromoInicio}>
+            <View style={styles.ImgCentrado}>
               <Image 
                 source={require('./assets/img/LogoFF.png')}
                 style={{width: 290, height: 250, marginRight: 10}}>
@@ -61,13 +61,131 @@ function Inicio({ navigation }) {
   );
 }
 
-function Pagina2({ navigation }) {
+function Entradas() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        onPress={() => navigation.navigate('Inicio')}
-        title="Go to home"
-      />
+      
+      <ScrollView style={{ width: '90%', marginTop: 20}}>
+        <ScrollView horizontal>
+
+          <View style={styles.ImgCentrado}>
+            <Image 
+              source={require('./assets/img/LogoFF.png')}
+              style={styles.ImagenProducto}>
+            </Image>
+            
+            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+
+              <Image 
+              source={require('./assets/img/LogoFF.png')}
+              style={styles.ImagenProducto}>
+            </Image>
+            
+            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+          </View>
+
+
+
+          <View style={styles.ImgCentrado}>
+            <Image 
+              source={require('./assets/img/LogoFF.png')}
+              style={styles.ImagenProducto}>
+            </Image>
+            
+            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+
+              <Image 
+              source={require('./assets/img/LogoFF.png')}
+              style={styles.ImagenProducto}>
+            </Image>
+            
+            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+          </View>
+
+
+
+          <View style={styles.ImgCentrado}>
+            <Image 
+              source={require('./assets/img/LogoFF.png')}
+              style={styles.ImagenProducto}>
+            </Image>
+            
+            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+
+              <Image 
+              source={require('./assets/img/LogoFF.png')}
+              style={styles.ImagenProducto}>
+            </Image>
+            
+            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+          </View>
+
+
+          <View style={styles.ImgCentrado}>
+            <Image 
+              source={require('./assets/img/LogoFF.png')}
+              style={styles.ImagenProducto}>
+            </Image>
+            
+            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+
+              <Image 
+              source={require('./assets/img/LogoFF.png')}
+              style={styles.ImagenProducto}>
+            </Image>
+            
+            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+          </View>
+
+
+
+          <View style={styles.ImgCentrado}>
+            <Image 
+              source={require('./assets/img/LogoFF.png')}
+              style={styles.ImagenProducto}>
+            </Image>
+            
+            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+
+              <Image 
+              source={require('./assets/img/LogoFF.png')}
+              style={styles.ImagenProducto}>
+            </Image>
+            
+            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+          </View>
+
+
+          
+          <View style={styles.ImgCentrado}>
+            <Image 
+              source={require('./assets/img/LogoFF.png')}
+              style={styles.ImagenProducto}>
+            </Image>
+            
+            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+
+              <Image 
+              source={require('./assets/img/LogoFF.png')}
+              style={styles.ImagenProducto}>
+            </Image>
+            
+            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+          </View>
+      </ScrollView>
+      </ScrollView>
     </View>
   );
 }
@@ -151,7 +269,7 @@ export default function App() {
 
         <Drawer.Navigator initialRouteName="Inicio"> 
           <Drawer.Screen name="Inicio" component={Inicio} />
-          <Drawer.Screen name="Pagina 2" component={Pagina2} />
+          <Drawer.Screen name="Entradas" component={Entradas} />
           <Drawer.Screen name="Pagina 3" component={Pagina3}/>
           <Drawer.Screen name="Pagina 4" component={Pagina4}/>
           <Drawer.Screen name="Pagina 5" component={Pagina5}/>
@@ -165,22 +283,22 @@ export default function App() {
         <View style={styles.BannerInf}>
           <View style={{marginTop: '3%', flexDirection: 'row'}}>
 
-          <TouchableOpacity onPress={() => alert('Redireccionamiento a inicio')}>
-            <Text style={{color: 'blue'}}>Inicio</Text>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => alert('Redireccionamiento a inicio')}>
+              <Text style={{color: 'blue'}}>Inicio</Text>
+            </TouchableOpacity>
 
-          <Text style={{color: 'blue'}}>       |       </Text>
+            <Text style={{color: 'blue'}}>       |       </Text>
 
-          <TouchableOpacity onPress={() => alert('Redireccionamiento a contactos')}>
-            <Text style={{color: 'blue'}}>Contacto</Text>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => alert('Redireccionamiento a contactos')}>
+              <Text style={{color: 'blue'}}>Contacto</Text>
+            </TouchableOpacity>
 
-          <Text style={{color: 'blue'}}>       |       </Text>
+            <Text style={{color: 'blue'}}>       |       </Text>
 
-          <TouchableOpacity onPress={() => alert('Redireccionamiento a mapa de sitio')}>
-            <Text style={{color: 'blue'}}>Mapa de sitio</Text>
-          </TouchableOpacity>
-        </View>
+            <TouchableOpacity onPress={() => alert('Redireccionamiento a mapa de sitio')}>
+              <Text style={{color: 'blue'}}>Mapa de sitio</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </NavigationContainer>
   );
@@ -228,9 +346,19 @@ BannerInf:{
   width: '100%',
   justifyContent: 'center',
 },
-ImgPromoInicio:{
+ImgCentrado:{
   alignContent: 'center',
   justifyContent: 'center'
 },
+ImagenProducto:{
+  width: 180, 
+  height: 150, 
+  marginRight: 50,
+},
+TextoProducto:{
+  width: 175, 
+  marginBottom: 70,
+}
+
 
 });
