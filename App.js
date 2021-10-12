@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, Button, View, FlatList, StyleSheet, Modal, Image } from 'react-native';
+import { Text, Button, View, FlatList, StyleSheet, Image , TouchableHighlight} from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { RectButton, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
@@ -15,9 +15,10 @@ import Postres from './Vistas/Postres';
 const Drawer = createDrawerNavigator();
 
 export default function App() {
-  return (
-      <NavigationContainer>
 
+  return (
+    <>
+      <NavigationContainer visible={false}>
         <View style={styles.BannerSup}>
           <View style={styles.BannerImageSpc}>
             <Image 
@@ -75,6 +76,7 @@ export default function App() {
           </View>
         </View>
       </NavigationContainer>
+     </> 
   );
 }
 
@@ -132,7 +134,7 @@ ImagenProducto:{
 TextoProducto:{
   width: 175, 
   marginBottom: 70,
-}
+},
 
 
 });
