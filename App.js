@@ -59,19 +59,19 @@ export default function App() {
           <View style={{marginTop: '3%', flexDirection: 'row'}}>
 
             <TouchableOpacity onPress={() => alert('Redireccionamiento a inicio')}>
-              <Text style={{color: 'blue'}}>Inicio</Text>
+              <Text style={{color: 'black'}}>Inicio</Text>
             </TouchableOpacity>
 
-            <Text style={{color: 'blue'}}>       |       </Text>
+            <Text style={{color: 'black'}}>       |       </Text>
 
             <TouchableOpacity onPress={() => alert('Redireccionamiento a contactos')}>
-              <Text style={{color: 'blue'}}>Contacto</Text>
+              <Text style={{color: 'black'}}>Contacto</Text>
             </TouchableOpacity>
 
-            <Text style={{color: 'blue'}}>       |       </Text>
+            <Text style={{color: 'black'}}>       |       </Text>
 
             <TouchableOpacity onPress={() => alert('Redireccionamiento a mapa de sitio')}>
-              <Text style={{color: 'blue'}}>Mapa de sitio</Text>
+              <Text style={{color: 'black'}}>Mapa de sitio</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -90,7 +90,7 @@ BannerSup:{
   flexDirection: 'row',
   height: 100,
   width: '100%',
-  backgroundColor: '#8fbc8f',
+  backgroundColor: '#8EDCB9',
 },
 BannerImageSpc:{
   flexBasis: 100,
@@ -117,8 +117,8 @@ BannerBtnAyuda:{
 },
 BannerInf:{
   flexDirection: 'row',
-  backgroundColor: '#8fbc8f',
-  height: 75,
+  backgroundColor: '#8EDCB9',
+  height: 40,
   width: '100%',
   justifyContent: 'center',
 },

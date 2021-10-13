@@ -84,41 +84,47 @@ setCantidad(0)
             source={imagenCombo}
             style={{width: 350, 
                     height: 250, 
-                    margin: '2.5%'}}
+                    alignSelf: 'center',
+                    borderRadius: 15}}
           />
 
-        <Text style={{fontSize: 50, fontWeight: 'bold'}}>{Combo}</Text>
+        <Text style={{fontSize: 50, fontWeight: 'bold', margin: 5}}>{Combo}</Text>
 
         <Text style={{fontSize: 20, 
                       width: '80%', 
                       marginLeft: 25}}>{DescCombo}</Text>
 
         <View style={{flexDirection: 'row', 
-                      alignContent: 'center',
+                      justifyContent: 'space-between',
                       marginLeft: 25,}}>
 
           <Text style={{fontSize: 40, 
                         fontWeight: 'bold', }}>${PrecioCombo}</Text>
           
-          <Text style={{fontSize: 20, 
-                        fontWeight: 'bold', 
-                        justifyContent: 'center', 
-                        margin: 10, 
-                        marginTop: 25}}>Cantidad</Text>
+          <View style={{flexDirection: 'row'}}>
 
-          <TextInput 
-            style={{backgroundColor: '#b4eeb4', 
-                    fontSize: 40, 
-                    width: '25%', 
-                    height: '75%', 
-                    borderRadius: 15, 
-                    marginTop: 10}}
-            keyboardType='numeric'
-            onChangeText={(cant) => setCantidad(cant)}
-          />
+            <Text style={{fontSize: 25, 
+                          fontWeight: 'bold',
+                          textAlignVertical: 'center',
+                          marginTop: 5,
+                          marginRight: 10}}>Cantidad</Text>
+
+            <TextInput 
+              style={{backgroundColor: '#b4eeb4', 
+                      fontSize: 25, 
+                      width: '35%', 
+                      height: '75%', 
+                      borderRadius: 15, 
+                      marginTop: 10,
+                      textAlign: 'center'}}
+              keyboardType='numeric'
+              onChangeText={(cant) => setCantidad(cant)}
+            />
+          </View>
+
         </View>
 
-        <Text style={{fontSize: 40, fontWeight: 'bold', marginLeft: 25}}>Total: ${parseFloat(PrecioCombo * Cantidad)}</Text>
+        <Text style={{fontSize: 40, fontWeight: 'bold', marginLeft: 25, color: '#17A05D', marginTop: 20}}>Total: ${parseFloat(PrecioCombo * Cantidad)}</Text>
 
         <Button title="Agregar al pedido"/>
         </View>
