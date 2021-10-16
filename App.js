@@ -8,15 +8,12 @@ import { Background } from '@react-navigation/elements';
 import Inicio from './Vistas/Inicio';
 import Entradas from './Vistas/Entradas';
 import Desayunos from './Vistas/Desayunos';
-import Almuerzos from './Vistas/Almuerzos';
+import Almuerzos from './Vistas/Almuerzos'; 
 import Postres from './Vistas/Postres';
 import LoginScreen from './Vistas/Login';
 import { createStackNavigator } from '@react-navigation/stack';
 //Librerias de login 
 import { useNavigation } from '@react-navigation/core';
-
-
-
 
 
 const Drawer = createDrawerNavigator();
