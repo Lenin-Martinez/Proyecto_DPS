@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Text, Button, View, FlatList, StyleSheet, Modal, Image ,TouchableHighlight, TextInput} from 'react-native';
 import { RectButton, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Value } from 'react-native-reanimated';
+import { auth } from '../firebase';
+import { useNavigation } from '@react-navigation/core';
 
 const Inicio = () => {
 
@@ -12,6 +14,7 @@ const Inicio = () => {
   {"Categoria": "Promocion", "Nombre": "Pizza", "Descripcion": "Descripcion de pizza Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","Precio": 7.00, "Imagen": require('../assets/Promo/Promo5.png') },
   {"Categoria": "Promocion", "Nombre": "Ensalada", "Descripcion": "Descripcion de ensalada Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","Precio": 4.50, "Imagen": require('../assets/Promo/Promo6.png') }
 ]
+const navigation = useNavigation();
 
 const Promociones = Productos.filter((result) => result.Categoria.includes('Promocion'))
 
@@ -37,6 +40,15 @@ function CerrarModal(){
   setCantidad(0)
 }
 
+const handleSignOut = () =>{
+  auth
+      .signOut()
+      .then(() => {
+          navigation.replace("Login")
+      })
+      .catch(error => alert(error.message))
+}
+
 return (
 <View style={{ flex: 1, alignItems: 'center'}}>
 
@@ -56,6 +68,15 @@ return (
         )
       }
   </ScrollView>
+  <View style={styles.container}>
+            <Text>Correo: {auth.currentUser.email}</Text>
+            <TouchableOpacity
+            style={styles.button}
+            onPress={handleSignOut}
+            >
+                <Text style={styles.TextButton}>Cerrar Sesion</Text>
+            </TouchableOpacity>
+        </View>
 
 
   <Modal
@@ -137,7 +158,6 @@ const styles = StyleSheet.create({
       marginBottom: 70,
     },
 
-
     ViewModalSup:
     {   width: '100%',
         height: '100%',
@@ -165,6 +185,23 @@ const styles = StyleSheet.create({
       height: 50,
       margin: 10,
     },
+    button:{
+      backgroundColor: '#0782F9',
+      width:'40%',
+      padding:15,
+      borderRadius:10,
+      alignItems:'center'
+  },
+  TextButton:{
+      color:'white',
+      fontWeight:'700',
+      fontSize: 16
+  },
+  container:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center'
+}
 
 })
 

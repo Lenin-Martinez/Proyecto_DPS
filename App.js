@@ -10,13 +10,40 @@ import Entradas from './Vistas/Entradas';
 import Desayunos from './Vistas/Desayunos';
 import Almuerzos from './Vistas/Almuerzos';
 import Postres from './Vistas/Postres';
+import LoginScreen from './Vistas/Login';
+import { createStackNavigator } from '@react-navigation/stack';
+//Librerias de login 
+import { useNavigation } from '@react-navigation/core';
+
+
+
 
 
 const Drawer = createDrawerNavigator();
 
+const Stack = createStackNavigator();
+
+
+function Root() {
+  
+  return(
+    <Drawer.Navigator > 
+          
+          <Drawer.Screen name="Inicio" component={Inicio} />
+          <Drawer.Screen name="Entradas" component={Entradas} />
+          <Drawer.Screen name="Desayunos" component={Desayunos}/>
+          <Drawer.Screen name="Almuerzos" component={Almuerzos}/>
+          <Drawer.Screen name="Postres" component={Postres}/>
+        </Drawer.Navigator>
+  )
+}
+
 export default function App() {
 
+ 
   return (
+    
+    
     <>
       <NavigationContainer visible={false}>
         <View style={styles.BannerSup}>
@@ -44,15 +71,17 @@ export default function App() {
             </TouchableOpacity>
           </View>
         </View>
+        <Stack.Navigator initialRouteName="Login">
+          <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}} />
+          <Stack.Screen
+          name="Root"
+          component={Root}
+          options={{headerShown: false}}
+          />
+        </Stack.Navigator>
 
 
-        <Drawer.Navigator initialRouteName="Inicio"> 
-          <Drawer.Screen name="Inicio" component={Inicio} />
-          <Drawer.Screen name="Entradas" component={Entradas} />
-          <Drawer.Screen name="Desayunos" component={Desayunos}/>
-          <Drawer.Screen name="Almuerzos" component={Almuerzos}/>
-          <Drawer.Screen name="Postres" component={Postres}/>
-        </Drawer.Navigator>
+       
 
 
         <View style={styles.BannerInf}>
@@ -64,7 +93,7 @@ export default function App() {
 
             <Text style={{color: 'blue'}}>       |       </Text>
 
-            <TouchableOpacity onPress={() => alert('Redireccionamiento a contactos')}>
+            <TouchableOpacity onPress={() => alert('Redireccionamiento a inicio') }>
               <Text style={{color: 'blue'}}>Contacto</Text>
             </TouchableOpacity>
 
