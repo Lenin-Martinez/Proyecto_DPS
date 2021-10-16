@@ -2,35 +2,26 @@ import React, { useState } from 'react';
 import { Text, Button, View, FlatList, StyleSheet, Modal, Image ,TouchableHighlight, TextInput} from 'react-native';
 import { RectButton, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Value } from 'react-native-reanimated';
+import Productos from '../assets/List/Productos';
 
 const Entradas = () => {
-
-  
-  const Productos =[{"Categoria": "Entrada", "Nombre": "Hamburguesa", "Descripcion": "Descripcion de hamburguesa Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","Precio": 5.00, "Imagen": require('../assets/Promo/Promo1.png') },
-                    {"Categoria": "Entrada", "Nombre": "Alitas", "Descripcion": "Descripcion de alitas Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","Precio": 2.50, "Imagen": require('../assets/Promo/Promo2.png') },
-                    {"Categoria": "Entrada", "Nombre": "Burrito", "Descripcion": "Descripcion del burrito Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","Precio": 3.00, "Imagen": require('../assets/Promo/Promo3.png') },
-                    {"Categoria": "Entrada", "Nombre": "Sandwish", "Descripcion": "Descripcion de sandwish Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","Precio": 1.50, "Imagen": require('../assets/Promo/Promo4.png') },
-                    {"Categoria": "Entrada", "Nombre": "Pizza", "Descripcion": "Descripcion de pizza Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","Precio": 7.00, "Imagen": require('../assets/Promo/Promo5.png') },
-                    {"Categoria": "Entrada", "Nombre": "Ensalada", "Descripcion": "Descripcion de ensalada Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.","Precio": 4.50, "Imagen": require('../assets/Promo/Promo6.png') }
-                    ]
-
 
 const ProdEntradas = Productos.filter((result) => result.Categoria.includes('Entrada'))
 
 const [VerModal, setVerModal] = useState(false);
-const [Combo, setCombo] = useState('');
-const [DescCombo, setDescCombo] = useState('');
-const [PrecioCombo, setPrecioCombo] = useState('');
-const [imagenCombo, setImagenCombo] = useState('');
+const [Entrada, setEntrada] = useState('');
+const [DescEntrada, setDescEntrada] = useState('');
+const [PrecioEntrada, setPrecioEntrada] = useState('');
+const [imagenEntrada, setImagenEntrada] = useState('');
 const [Cantidad, setCantidad] = useState(0);
 
-function SeleccionCombo(resultado){
-const ComboSelect = ProdEntradas.find((promo) => promo.Nombre === resultado)
+function SeleccionEntrada(resultado){
+const EntradaSelect = ProdEntradas.find((promo) => promo.Nombre === resultado)
 
-setCombo(resultado)
-setDescCombo(ComboSelect.Descripcion)
-setPrecioCombo(ComboSelect.Precio)
-setImagenCombo(ComboSelect.Imagen)
+setEntrada(resultado)
+setDescEntrada(EntradaSelect.Descripcion)
+setPrecioEntrada(EntradaSelect.Precio)
+setImagenEntrada(EntradaSelect.Imagen)
 setVerModal(true)
 }
 
@@ -48,12 +39,12 @@ setCantidad(0)
             {
               ProdEntradas.map((resultado) =>
               <View style={{flexBasis: '49%',}}>
-                  <TouchableOpacity onPress={() => SeleccionCombo(resultado.Nombre)}>
+                  <TouchableOpacity onPress={() => SeleccionEntrada(resultado.Nombre)}>
                     <Image 
-                      source={resultado.Imagen}
+                      source={{uri: resultado.Imagen}}
                       style={styles.ImagenProducto}>
                     </Image>
-                    
+                    <Text style={{color: 'black', fontSize: 15, fontWeight: 'bold', marginTop: 5}}>{resultado.Nombre}</Text>
                     <Text style={styles.TextoProducto}>{resultado.Descripcion}</Text>
                   </TouchableOpacity>
                 </View>
@@ -81,44 +72,50 @@ setCantidad(0)
 
         <View>
           <Image
-            source={imagenCombo}
+            source={{uri: imagenEntrada}}
             style={{width: 350, 
                     height: 250, 
-                    margin: '2.5%'}}
+                    alignSelf: 'center',
+                    borderRadius: 15}}
           />
 
-        <Text style={{fontSize: 50, fontWeight: 'bold'}}>{Combo}</Text>
+        <Text style={{fontSize: 50, fontWeight: 'bold', margin: 5}}>{Entrada}</Text>
 
         <Text style={{fontSize: 20, 
                       width: '80%', 
-                      marginLeft: 25}}>{DescCombo}</Text>
+                      marginLeft: 25}}>{DescEntrada}</Text>
 
         <View style={{flexDirection: 'row', 
-                      alignContent: 'center',
+                      justifyContent: 'space-between',
                       marginLeft: 25,}}>
 
           <Text style={{fontSize: 40, 
-                        fontWeight: 'bold', }}>${PrecioCombo}</Text>
+                        fontWeight: 'bold', }}>${PrecioEntrada}</Text>
           
-          <Text style={{fontSize: 20, 
-                        fontWeight: 'bold', 
-                        justifyContent: 'center', 
-                        margin: 10, 
-                        marginTop: 25}}>Cantidad</Text>
+          <View style={{flexDirection: 'row'}}>
 
-          <TextInput 
-            style={{backgroundColor: '#b4eeb4', 
-                    fontSize: 40, 
-                    width: '25%', 
-                    height: '75%', 
-                    borderRadius: 15, 
-                    marginTop: 10}}
-            keyboardType='numeric'
-            onChangeText={(cant) => setCantidad(cant)}
-          />
+            <Text style={{fontSize: 25, 
+                          fontWeight: 'bold',
+                          textAlignVertical: 'center',
+                          marginTop: 5,
+                          marginRight: 10}}>Cantidad</Text>
+
+            <TextInput 
+              style={{backgroundColor: '#b4eeb4', 
+                      fontSize: 25, 
+                      width: '35%', 
+                      height: '75%', 
+                      borderRadius: 15, 
+                      marginTop: 10,
+                      textAlign: 'center'}}
+              keyboardType='numeric'
+              onChangeText={(cant) => setCantidad(cant)}
+            />
+          </View>
+
         </View>
 
-        <Text style={{fontSize: 40, fontWeight: 'bold', marginLeft: 25}}>Total: ${parseFloat(PrecioCombo * Cantidad)}</Text>
+        <Text style={{fontSize: 40, fontWeight: 'bold', marginLeft: 25, color: '#17A05D', marginTop: 20}}>Total: ${parseFloat(PrecioEntrada * Cantidad)}</Text>
 
         <Button title="Agregar al pedido"/>
         </View>
