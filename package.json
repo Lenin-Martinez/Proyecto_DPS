@@ -78,10 +78,16 @@
     "react-native-web": "~0.13.12",
     "reactstrap": "^8.10.0",
     "yet": "^0.1.0"
+  
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
+  
   },
   "private": true
+
 }
+
 >>>>>>> 4e8d28ae99c84e386b5c64133cea717f4aefb5dc
+
+
