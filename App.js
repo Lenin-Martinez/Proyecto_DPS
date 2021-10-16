@@ -15,11 +15,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 //Librerias de login 
 import { useNavigation } from '@react-navigation/core';
 
-
 const Drawer = createDrawerNavigator();
 
 const Stack = createStackNavigator();
-
 
 function Root() {
   
@@ -76,9 +74,6 @@ export default function App() {
           options={{headerShown: false}}
           />
         </Stack.Navigator>
-
-
-       
 
 
         <View style={styles.BannerInf}>
