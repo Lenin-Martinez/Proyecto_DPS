@@ -101,6 +101,13 @@ export default function App() {
   );
 }
 
+
+
+
+
+
+
+
 const styles = StyleSheet.create({
   item: {
     padding: 10,
@@ -157,5 +164,7 @@ TextoProducto:{
   marginBottom: 70,
 },
 
+  
+  
 
 });
