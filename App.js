@@ -1,231 +1,19 @@
 import React, { useState } from 'react';
-import { Text, Button, View, FlatList, StyleSheet, Modal, Image } from 'react-native';
+import { Text, Button, View, FlatList, StyleSheet, Image , TouchableHighlight} from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { RectButton, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Value } from 'react-native-reanimated';
 import { Background } from '@react-navigation/elements';
-
-function Inicio() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center'}}>
-
-        <ScrollView 
-          horizontal
-          style={{width: '90%', marginTop: 25}}>
-            <View style={styles.ImgCentrado}>
-              <Image 
-                source={require('./assets/img/LogoFF.png')}
-                style={{width: 290, height: 250, marginRight: 10}}>
-              </Image>
-            </View>
-
-            <View style={styles.ImgCentrado}>
-              <Image 
-                source={require('./assets/img/LogoFF.png')}
-                style={{width: 290, height: 250, marginRight: 10}}>
-              </Image>
-            </View>
-
-            <View style={styles.ImgCentrado}>
-              <Image 
-                source={require('./assets/img/LogoFF.png')}
-                style={{width: 290, height: 250, marginRight: 10}}>
-              </Image>
-            </View>
-
-            <View style={styles.ImgCentrado}>
-              <Image 
-                source={require('./assets/img/LogoFF.png')}
-                style={{width: 290, height: 250, marginRight: 10}}>
-              </Image>
-            </View>
-
-            <View style={styles.ImgCentrado}>
-              <Image 
-                source={require('./assets/img/LogoFF.png')}
-                style={{width: 290, height: 250, marginRight: 10}}>
-              </Image>
-            </View>
-
-            <View style={styles.ImgCentrado}>
-              <Image 
-                source={require('./assets/img/LogoFF.png')}
-                style={{width: 290, height: 250, marginRight: 10}}>
-              </Image>
-            </View>
-            
-        </ScrollView>
-
-    </View>
-  );
-}
-
-function Entradas() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      
-      <ScrollView style={{ width: '90%', marginTop: 20}}>
-        <ScrollView horizontal>
-
-          <View style={styles.ImgCentrado}>
-            <Image 
-              source={require('./assets/img/LogoFF.png')}
-              style={styles.ImagenProducto}>
-            </Image>
-            
-            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-
-              <Image 
-              source={require('./assets/img/LogoFF.png')}
-              style={styles.ImagenProducto}>
-            </Image>
-            
-            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-          </View>
-
-
-
-          <View style={styles.ImgCentrado}>
-            <Image 
-              source={require('./assets/img/LogoFF.png')}
-              style={styles.ImagenProducto}>
-            </Image>
-            
-            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-
-              <Image 
-              source={require('./assets/img/LogoFF.png')}
-              style={styles.ImagenProducto}>
-            </Image>
-            
-            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-          </View>
-
-
-
-          <View style={styles.ImgCentrado}>
-            <Image 
-              source={require('./assets/img/LogoFF.png')}
-              style={styles.ImagenProducto}>
-            </Image>
-            
-            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-
-              <Image 
-              source={require('./assets/img/LogoFF.png')}
-              style={styles.ImagenProducto}>
-            </Image>
-            
-            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-          </View>
-
-
-          <View style={styles.ImgCentrado}>
-            <Image 
-              source={require('./assets/img/LogoFF.png')}
-              style={styles.ImagenProducto}>
-            </Image>
-            
-            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-
-              <Image 
-              source={require('./assets/img/LogoFF.png')}
-              style={styles.ImagenProducto}>
-            </Image>
-            
-            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-          </View>
-
-
-
-          <View style={styles.ImgCentrado}>
-            <Image 
-              source={require('./assets/img/LogoFF.png')}
-              style={styles.ImagenProducto}>
-            </Image>
-            
-            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-
-              <Image 
-              source={require('./assets/img/LogoFF.png')}
-              style={styles.ImagenProducto}>
-            </Image>
-            
-            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-          </View>
-
-
-          
-          <View style={styles.ImgCentrado}>
-            <Image 
-              source={require('./assets/img/LogoFF.png')}
-              style={styles.ImagenProducto}>
-            </Image>
-            
-            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-
-              <Image 
-              source={require('./assets/img/LogoFF.png')}
-              style={styles.ImagenProducto}>
-            </Image>
-            
-            <Text style={styles.TextoProducto}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-          </View>
-      </ScrollView>
-      </ScrollView>
-    </View>
-  );
-}
-function Pagina3({ navigation }){
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        onPress={() => navigation.navigate('Inicio')}
-        title="Go to home"
-      />
-    </View>
-  );
-}
-function Pagina4({ navigation }){
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        onPress={() => navigation.navigate('Inicio')}
-        title="Go to home"
-      />
-    </View>
-  );
-}
-function Pagina5({ navigation }){
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button
-        onPress={() => navigation.navigate('Inicio')}
-        title="Go to home"
-      />
-    </View>
-  );
-}
-
-
-
-
-
-
-
+import Inicio from './Vistas/Inicio';
+import Entradas from './Vistas/Entradas';
+import Desayunos from './Vistas/Desayunos';
+import Almuerzos from './Vistas/Almuerzos';
+import Postres from './Vistas/Postres';
+import LoginScreen from './Vistas/Login';
+import { createStackNavigator } from '@react-navigation/stack';
+//Librerias de login 
+import { useNavigation } from '@react-navigation/core';
 
 
 
@@ -233,10 +21,31 @@ function Pagina5({ navigation }){
 
 const Drawer = createDrawerNavigator();
 
-export default function App() {
-  return (
-      <NavigationContainer>
+const Stack = createStackNavigator();
 
+
+function Root() {
+  
+  return(
+    <Drawer.Navigator > 
+          
+          <Drawer.Screen name="Inicio" component={Inicio} />
+          <Drawer.Screen name="Entradas" component={Entradas} />
+          <Drawer.Screen name="Desayunos" component={Desayunos}/>
+          <Drawer.Screen name="Almuerzos" component={Almuerzos}/>
+          <Drawer.Screen name="Postres" component={Postres}/>
+        </Drawer.Navigator>
+  )
+}
+
+export default function App() {
+
+ 
+  return (
+    
+    
+    <>
+      <NavigationContainer visible={false}>
         <View style={styles.BannerSup}>
           <View style={styles.BannerImageSpc}>
             <Image 
@@ -261,46 +70,42 @@ export default function App() {
               </Image>
             </TouchableOpacity>
           </View>
-
         </View>
+        <Stack.Navigator initialRouteName="Login">
+          <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}} />
+          <Stack.Screen
+          name="Root"
+          component={Root}
+          options={{headerShown: false}}
+          />
+        </Stack.Navigator>
 
 
-
-
-        <Drawer.Navigator initialRouteName="Inicio"> 
-          <Drawer.Screen name="Inicio" component={Inicio} />
-          <Drawer.Screen name="Entradas" component={Entradas} />
-          <Drawer.Screen name="Pagina 3" component={Pagina3}/>
-          <Drawer.Screen name="Pagina 4" component={Pagina4}/>
-          <Drawer.Screen name="Pagina 5" component={Pagina5}/>
-        </Drawer.Navigator>
-
-
-
-
+       
 
 
         <View style={styles.BannerInf}>
           <View style={{marginTop: '3%', flexDirection: 'row'}}>
 
             <TouchableOpacity onPress={() => alert('Redireccionamiento a inicio')}>
-              <Text style={{color: 'blue'}}>Inicio</Text>
+              <Text style={{color: 'black'}}>Inicio</Text>
             </TouchableOpacity>
 
-            <Text style={{color: 'blue'}}>       |       </Text>
+            <Text style={{color: 'black'}}>       |       </Text>
 
             <TouchableOpacity onPress={() => alert('Redireccionamiento a contactos')}>
-              <Text style={{color: 'blue'}}>Contacto</Text>
+              <Text style={{color: 'black'}}>Contacto</Text>
             </TouchableOpacity>
 
-            <Text style={{color: 'blue'}}>       |       </Text>
+            <Text style={{color: 'black'}}>       |       </Text>
 
             <TouchableOpacity onPress={() => alert('Redireccionamiento a mapa de sitio')}>
-              <Text style={{color: 'blue'}}>Mapa de sitio</Text>
+              <Text style={{color: 'black'}}>Mapa de sitio</Text>
             </TouchableOpacity>
           </View>
         </View>
       </NavigationContainer>
+     </> 
   );
 }
 
@@ -314,7 +119,7 @@ BannerSup:{
   flexDirection: 'row',
   height: 100,
   width: '100%',
-  backgroundColor: '#8fbc8f',
+  backgroundColor: '#8EDCB9',
 },
 BannerImageSpc:{
   flexBasis: 100,
@@ -341,8 +146,8 @@ BannerBtnAyuda:{
 },
 BannerInf:{
   flexDirection: 'row',
-  backgroundColor: '#8fbc8f',
-  height: 75,
+  backgroundColor: '#8EDCB9',
+  height: 40,
   width: '100%',
   justifyContent: 'center',
 },
@@ -358,7 +163,7 @@ ImagenProducto:{
 TextoProducto:{
   width: 175, 
   marginBottom: 70,
-}
+},
 
 
 });
