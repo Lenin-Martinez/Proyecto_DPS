@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Text, Button, View, FlatList, StyleSheet, Image , TouchableHighlight} from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { RectButton, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Value } from 'react-native-reanimated';
@@ -8,37 +9,29 @@ import { Background } from '@react-navigation/elements';
 import Inicio from './Vistas/Inicio';
 import Entradas from './Vistas/Entradas';
 import Desayunos from './Vistas/Desayunos';
-import Almuerzos from './Vistas/Almuerzos'; 
+import Almuerzos from './Vistas/Almuerzos';
 import Postres from './Vistas/Postres';
 import LoginScreen from './Vistas/Login';
-import { createStackNavigator } from '@react-navigation/stack';
-//Librerias de login 
-import { useNavigation } from '@react-navigation/core';
+
 
 const Drawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
 
-const Stack = createStackNavigator();
-
-function Root() {
-  
+function Root(){
   return(
-    <Drawer.Navigator > 
-          
+    <Drawer.Navigator initialRouteName="Inicio"> 
           <Drawer.Screen name="Inicio" component={Inicio} />
           <Drawer.Screen name="Entradas" component={Entradas} />
           <Drawer.Screen name="Desayunos" component={Desayunos}/>
           <Drawer.Screen name="Almuerzos" component={Almuerzos}/>
           <Drawer.Screen name="Postres" component={Postres}/>
-        </Drawer.Navigator>
+    </Drawer.Navigator>
   )
 }
 
 export default function App() {
 
- 
   return (
-    
-    
     <>
       <NavigationContainer visible={false}>
         <View style={styles.BannerSup}>
@@ -66,14 +59,13 @@ export default function App() {
             </TouchableOpacity>
           </View>
         </View>
-        <Stack.Navigator initialRouteName="Login">
-          <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}} />
-          <Stack.Screen
-          name="Root"
-          component={Root}
-          options={{headerShown: false}}
-          />
+        <Stack.Navigator>
+          <Stack.Screen options={{headerShown: false}} name="Login" component={LoginScreen} />
+          <Stack.Screen name="Root" component={Root} options={{headerShown: false}} />
         </Stack.Navigator>
+
+
+        
 
 
         <View style={styles.BannerInf}>
@@ -100,13 +92,6 @@ export default function App() {
      </> 
   );
 }
-
-
-
-
-
-
-
 
 const styles = StyleSheet.create({
   item: {
@@ -164,7 +149,5 @@ TextoProducto:{
   marginBottom: 70,
 },
 
-  
-  
 
 });

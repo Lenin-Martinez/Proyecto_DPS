@@ -3,8 +3,12 @@ import { Text, Button, View, FlatList, StyleSheet, Modal, Image ,TouchableHighli
 import { RectButton, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Value } from 'react-native-reanimated';
 import Productos from '../assets/List/Productos';
+import { useNavigation } from '@react-navigation/core';
+import { auth } from '../firebase';
+
 
 const Inicio = () => {
+  const navigation = useNavigation();
 
   const Promociones = Productos.filter((result) => result.Categoria.includes('Promocion'))
 
@@ -61,7 +65,8 @@ return (
       </View>
         )
       }
-  </ScrollView>
+  </ScrollView>  
+
   <View style={styles.container}>
             <Text>Correo: {auth.currentUser.email}</Text>
             <TouchableOpacity

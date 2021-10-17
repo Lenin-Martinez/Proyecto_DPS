@@ -20,7 +20,7 @@ Martinez Huezo, Lenin Steven
 MH180095  
 G03T  
 
-Reyes Manzanares,  Gerardo Javier  
+Reyes Manzanares, Gerardo Javier  
 RM162835  
 G03T 
 
@@ -34,4 +34,4 @@ https://github.com/Lenin-Martinez/Proyecto_DPS.git
 ______________________________________________________________________________
 -- Enlace a tablero trello fase 1 --
 
-https://trello.com/b/BiyFmUlg/primera-fase 
+https://trello.com/b/BiyFmUlg/primera-fase
