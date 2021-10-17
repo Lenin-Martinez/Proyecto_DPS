@@ -14,8 +14,11 @@ import Postres from './Vistas/Postres';
 import LoginScreen from './Vistas/Login';
 
 
+
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
+
+
 
 function Root(){
   return(
@@ -93,6 +96,8 @@ export default function App() {
   );
 }
 
+
+
 const styles = StyleSheet.create({
   item: {
     padding: 10,
@@ -151,3 +156,14 @@ TextoProducto:{
 
 
 });
+
+
+
+
+
+
+
+
+
+
+
