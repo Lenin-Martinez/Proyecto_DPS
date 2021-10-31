@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { Text, Button, View, FlatList, StyleSheet, Modal, Image ,TouchableHighlight, TextInput} from 'react-native';
 import { RectButton, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Value } from 'react-native-reanimated';
-import Productos from '../assets/List/Productos';
 
 const Entradas = () => {
 
-const ProdEntradas = Productos.filter((result) => result.Categoria.includes('Entrada'))
 
 const [VerModal, setVerModal] = useState(false);
 const [Entrada, setEntrada] = useState('');
@@ -14,21 +12,37 @@ const [DescEntrada, setDescEntrada] = useState('');
 const [PrecioEntrada, setPrecioEntrada] = useState('');
 const [imagenEntrada, setImagenEntrada] = useState('');
 const [Cantidad, setCantidad] = useState(0);
+const [ElementosApi, setElementosApi] = useState([]);
 
-function SeleccionEntrada(resultado){
-const EntradaSelect = ProdEntradas.find((promo) => promo.Nombre === resultado)
 
-setEntrada(resultado)
-setDescEntrada(EntradaSelect.Descripcion)
-setPrecioEntrada(EntradaSelect.Precio)
-setImagenEntrada(EntradaSelect.Imagen)
-setVerModal(true)
-}
+    fetch('https://dps-api-fastfood-default-rtdb.firebaseio.com/Categorias/Entradas.json', {
+      method: 'GET'
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      const listado=responseJson;
+      setElementosApi(listado.Productos);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 
-function CerrarModal(){
-setVerModal(false)
-setCantidad(0)
-}
+
+  function SeleccionEntrada(resultado){
+
+  const EntradaSelect = ElementosApi.find((promo) => promo.Nombre === resultado)
+
+  setEntrada(resultado)
+  setDescEntrada(EntradaSelect.Descripcion)
+  setPrecioEntrada(EntradaSelect.Precio)
+  setImagenEntrada(EntradaSelect.Imagen)
+  setVerModal(true)
+  }
+
+  function CerrarModal(){
+  setVerModal(false)
+  setCantidad(0)
+  }
 
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -37,15 +51,15 @@ setCantidad(0)
           
           <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
             {
-              ProdEntradas.map((resultado) =>
+              ElementosApi.map((prodApi) =>
               <View style={{flexBasis: '49%',}}>
-                  <TouchableOpacity onPress={() => SeleccionEntrada(resultado.Nombre)}>
+                  <TouchableOpacity onPress={() => SeleccionEntrada(prodApi.Nombre)}>
                     <Image 
-                      source={{uri: resultado.Imagen}}
+                      source={{uri: prodApi.Imagen}}
                       style={styles.ImagenProducto}>
                     </Image>
-                    <Text style={{color: 'black', fontSize: 15, fontWeight: 'bold', marginTop: 5}}>{resultado.Nombre}</Text>
-                    <Text style={styles.TextoProducto}>{resultado.Descripcion}</Text>
+                    <Text style={{color: 'black', fontSize: 15, fontWeight: 'bold', marginTop: 5}}>{prodApi.Nombre}</Text>
+                    <Text style={styles.TextoProducto}>{prodApi.Descripcion}</Text>
                   </TouchableOpacity>
                 </View>
               )

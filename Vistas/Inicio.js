@@ -2,25 +2,38 @@ import React, { useState } from 'react';
 import { Text, Button, View, FlatList, StyleSheet, Modal, Image ,TouchableHighlight, TextInput} from 'react-native';
 import { RectButton, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Value } from 'react-native-reanimated';
-import Productos from '../assets/List/Productos';
 import { useNavigation } from '@react-navigation/core';
 import { auth } from '../firebase';
 
 
+
 const Inicio = () => {
+
   const navigation = useNavigation();
-
-  const Promociones = Productos.filter((result) => result.Categoria.includes('Promocion'))
-
+  
     const [VerModal, setVerModal] = useState(false);
     const [Combo, setCombo] = useState('');
     const [DescCombo, setDescCombo] = useState('');
     const [PrecioCombo, setPrecioCombo] = useState('');
     const [imagenCombo, setImagenCombo] = useState('');
     const [Cantidad, setCantidad] = useState(0);
+    const [ElementosApi, setElementosApi] = useState([]);
     
+    fetch('https://dps-api-fastfood-default-rtdb.firebaseio.com/Categorias/Promociones.json', {
+           method: 'GET'
+        })
+        .then((response) => response.json())
+        .then((responseJson) => {
+           const listado=responseJson;
+           setElementosApi(listado.Productos);
+        })
+        .catch((error) => {
+           console.error(error);
+        });
+
   function SeleccionCombo(resultado){
-    const ComboSelect = Promociones.find((promo) => promo.Nombre === resultado)
+    
+    const ComboSelect = ElementosApi.find((promo) => promo.Nombre === resultado)
   
     setCombo(resultado)
     setDescCombo(ComboSelect.Descripcion)
@@ -44,22 +57,23 @@ const handleSignOut = () =>{
 }
 
 return (
+
 <View style={{ flex: 1, alignItems: 'center'}}>
 
   <ScrollView 
     horizontal
     style={{width: '90%', marginTop: 25}}>
    {
-        Promociones.map((resultado) =>
+        ElementosApi.map((prodApi) =>
         <View style={styles.ImgCentrado}>
-        <TouchableOpacity onPress={() => SeleccionCombo(resultado.Nombre)}>
+        <TouchableOpacity onPress={() => SeleccionCombo(prodApi.Nombre)}>
           <Image 
-            source={{uri: resultado.Imagen}}
+            source={{uri: prodApi.Imagen}}
             style={{width: 290, height: 250, marginRight: 10, borderRadius: 20}}>
           </Image>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>          
-            <Text style={{color: 'black', alignSelf: 'center', fontSize: 20, fontWeight: 'bold', marginTop: 5, marginLeft: 20}}>{resultado.Nombre}</Text>
-            <Text style={{color: '#870100', alignSelf: 'center', fontSize: 20, fontWeight: 'bold', marginTop: 5, marginEnd: 25}}>${resultado.Precio}</Text>
+            <Text style={{color: 'black', alignSelf: 'center', fontSize: 20, fontWeight: 'bold', marginTop: 5, marginLeft: 20}}>{prodApi.Nombre}</Text>
+            <Text style={{color: '#870100', alignSelf: 'center', fontSize: 20, fontWeight: 'bold', marginTop: 5, marginEnd: 25}}>${prodApi.Precio}</Text>
           </View>
         </TouchableOpacity>
       </View>

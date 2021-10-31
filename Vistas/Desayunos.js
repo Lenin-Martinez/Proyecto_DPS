@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import { Text, Button, View, FlatList, StyleSheet, Modal, Image ,TouchableHighlight, TextInput} from 'react-native';
 import { RectButton, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Value } from 'react-native-reanimated';
-import Productos from '../assets/List/Productos';
 
 const Desayunos = () => {
-
-      const ProdDesayuno = Productos.filter((result) => result.Categoria.includes('Desayuno'))
 
       const [VerModal, setVerModal] = useState(false);
       const [Desayuno, setDesayuno] = useState('');
@@ -14,9 +11,24 @@ const Desayunos = () => {
       const [PrecioDesayuno, setPrecioDesayuno] = useState('');
       const [imagenDesayuno, setImagenDesayuno] = useState('');
       const [Cantidad, setCantidad] = useState(0);
+      const [ElementosApi, setElementosApi] = useState([]);
       
+
+      fetch('https://dps-api-fastfood-default-rtdb.firebaseio.com/Categorias/Desayunos.json', {
+        method: 'GET'
+      })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        const listado=responseJson;
+        setElementosApi(listado.Productos);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  
+
     function SeleccionDesayuno(resultado){
-      const DesayunosSelect = ProdDesayuno.find((promo) => promo.Nombre === resultado)
+      const DesayunosSelect = ElementosApi.find((promo) => promo.Nombre === resultado)
       
       setDesayuno(resultado)
       setDescDesayuno(DesayunosSelect.Descripcion)
@@ -38,15 +50,15 @@ const Desayunos = () => {
           
           <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
             {
-              ProdDesayuno.map((resultado) =>
+              ElementosApi.map((prodApi) =>
               <View style={{flexBasis: '49%',}}>
-                  <TouchableOpacity onPress={() => SeleccionDesayuno(resultado.Nombre)}>
+                  <TouchableOpacity onPress={() => SeleccionDesayuno(prodApi.Nombre)}>
                     <Image 
-                      source={{uri: resultado.Imagen}}
+                      source={{uri: prodApi.Imagen}}
                       style={styles.ImagenProducto}>
                     </Image>
-                    <Text style={{color: 'black', fontSize: 15, fontWeight: 'bold', marginTop: 5}}>{resultado.Nombre}</Text>
-                    <Text style={styles.TextoProducto}>{resultado.Descripcion}</Text>
+                    <Text style={{color: 'black', fontSize: 15, fontWeight: 'bold', marginTop: 5}}>{prodApi.Nombre}</Text>
+                    <Text style={styles.TextoProducto}>{prodApi.Descripcion}</Text>
                   </TouchableOpacity>
                 </View>
               )

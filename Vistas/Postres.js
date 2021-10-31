@@ -2,21 +2,31 @@ import React, { useState } from 'react';
 import { Text, Button, View, FlatList, StyleSheet, Modal, Image ,TouchableHighlight, TextInput} from 'react-native';
 import { RectButton, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Value } from 'react-native-reanimated';
-import Productos from '../assets/List/Productos';
 
 const Postres = () => {
   
-      const ProdPostre = Productos.filter((result) => result.Categoria.includes('Postre'))
-
       const [VerModal, setVerModal] = useState(false);
       const [Postre, setPostre] = useState('');
       const [DescPostre, setDescPostre] = useState('');
       const [PrecioPostre, setPrecioPostre] = useState('');
       const [imagenPostre, setImagenPostre] = useState('');
       const [Cantidad, setCantidad] = useState(0);
+      const [ElementosApi, setElementosApi] = useState([]);
       
+      fetch('https://dps-api-fastfood-default-rtdb.firebaseio.com/Categorias/Postres.json', {
+        method: 'GET'
+      })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        const listado=responseJson;
+        setElementosApi(listado.Productos);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  
     function SeleccionPostre(resultado){
-      const PostreSelect = ProdPostre.find((promo) => promo.Nombre === resultado)
+      const PostreSelect = ElementosApi.find((promo) => promo.Nombre === resultado)
       
       setPostre(resultado)
       setDescPostre(PostreSelect.Descripcion)
@@ -36,15 +46,15 @@ const Postres = () => {
         <ScrollView style={{ width: '90%', marginTop: 20}}>
         <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
             {
-              ProdPostre.map((resultado) =>
+              ElementosApi.map((prodApi) =>
               <View style={{flexBasis: '49%',}}>
-                  <TouchableOpacity onPress={() => SeleccionPostre(resultado.Nombre)}>
+                  <TouchableOpacity onPress={() => SeleccionPostre(prodApi.Nombre)}>
                     <Image 
-                      source={{uri: resultado.Imagen}}
+                      source={{uri: prodApi.Imagen}}
                       style={styles.ImagenProducto}>
                     </Image>
-                    <Text style={{color: 'black', fontSize: 15, fontWeight: 'bold', marginTop: 5}}>{resultado.Nombre}</Text>
-                    <Text style={styles.TextoProducto}>{resultado.Descripcion}</Text>
+                    <Text style={{color: 'black', fontSize: 15, fontWeight: 'bold', marginTop: 5}}>{prodApi.Nombre}</Text>
+                    <Text style={styles.TextoProducto}>{prodApi.Descripcion}</Text>
                   </TouchableOpacity>
                 </View>
               )
