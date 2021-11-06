@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, Button, View, FlatList, StyleSheet, Modal, Image ,TouchableHighlight, TextInput} from 'react-native';
+import { Text, Button, View, FlatList, StyleSheet, Modal, Image ,TouchableHighlight, TextInput, alert, Alert} from 'react-native';
 import { RectButton, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Value } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/core';
@@ -55,23 +55,41 @@ const handleSignOut = () =>{
       })
       .catch(error => alert(error.message))
 }
+const AlerOut = () => {
+  Alert.alert(
+    "Cerrar Sesión",
+    "¿Está seguro que quiere cerrar sesión?",
+    [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel"
+      },
+      { text: "OK", onPress:handleSignOut}
+    ]
+  );
+}
+
 
 return (
+  <>
+  
+  <View style={{ flex: 1, alignItems: 'center'}}>
 
-<View style={{ flex: 1, alignItems: 'center'}}>
-
-  <ScrollView 
-    horizontal
-    style={{width: '90%', marginTop: 25}}>
+  <ScrollView
+    style={{width: '100%'}}>
    {
         ElementosApi.map((prodApi) =>
         <View style={styles.ImgCentrado}>
-        <TouchableOpacity onPress={() => SeleccionCombo(prodApi.Nombre)}>
+        <TouchableOpacity
+          style = {styles.ImgCentrado}
+          onPress={() => SeleccionCombo(prodApi.Nombre)}
+        >
           <Image 
             source={{uri: prodApi.Imagen}}
-            style={{width: 290, height: 250, marginRight: 10, borderRadius: 20}}>
+            style={{width: 290, height: 250, marginRight: 10, borderRadius: 20, alignSelf: 'center', marginTop: 5}}>
           </Image>
-          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>          
+          <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>          
             <Text style={{color: 'black', alignSelf: 'center', fontSize: 20, fontWeight: 'bold', marginTop: 5, marginLeft: 20}}>{prodApi.Nombre}</Text>
             <Text style={{color: '#870100', alignSelf: 'center', fontSize: 20, fontWeight: 'bold', marginTop: 5, marginEnd: 25}}>${prodApi.Precio}</Text>
           </View>
@@ -81,15 +99,7 @@ return (
       }
   </ScrollView>  
 
-  <View style={styles.container}>
-            <Text>Correo: {auth.currentUser.email}</Text>
-            <TouchableOpacity
-            style={styles.button}
-            onPress={handleSignOut}
-            >
-                <Text style={styles.TextButton}>Cerrar Sesion</Text>
-            </TouchableOpacity>
-        </View>
+
 
 
   <Modal
@@ -160,6 +170,16 @@ return (
     </View>
   </Modal>
 </View>
+<View style={styles.container}>
+    <Text>Correo: {auth.currentUser.email}</Text>
+    <TouchableOpacity
+      style={styles.button}
+      onPress={AlerOut}
+    >
+      <Text style={styles.TextButton}>Cerrar Sesion</Text>
+    </TouchableOpacity>
+  </View>
+</>
 );
 }
 
@@ -167,6 +187,7 @@ const styles = StyleSheet.create({
     ImgCentrado:{
       alignContent: 'center',
       justifyContent: 'center',
+      marginVertical: 5,
     },
     ImagenProducto:{
       width: 180, 
@@ -205,20 +226,25 @@ const styles = StyleSheet.create({
       margin: 10,
     },
     button:{
-      backgroundColor: '#0782F9',
-      width:'40%',
-      padding:15,
-      borderRadius:10,
-      alignItems:'center'
+      backgroundColor: '#1AA15F',
+      width:'100%',
+      padding:10,
+      borderRadius:50,
+      alignSelf:'center',
+      textAlignVertical: 'center'
   },
   TextButton:{
       color:'white',
       fontWeight:'700',
-      fontSize: 16
+      fontSize: 12,
   },
   container:{
-    flex:1,
-    justifyContent:'center',
+    backgroundColor: '#8EDCB9',
+    borderTopLeftRadius: 35,
+    borderTopRightRadius: 35,
+    width: '100%',
+    justifyContent:'space-around',
+    flexDirection: 'row',
     alignItems:'center'
 }
 

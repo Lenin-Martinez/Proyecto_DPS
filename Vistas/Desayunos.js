@@ -46,9 +46,9 @@ const Desayunos = () => {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         
-        <ScrollView style={{ width: '90%', marginTop: 20}}>
+        <ScrollView style={{ width: '100%'}}>
           
-          <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
+          <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginTop: 10, marginLeft: 5}}>
             {
               ElementosApi.map((prodApi) =>
               <View style={{flexBasis: '49%',}}>
@@ -146,7 +146,7 @@ const Desayunos = () => {
     ImagenProducto:{
       width: 180, 
       height: 150, 
-      marginRight: 50,
+      borderRadius: 20
     },
     TextoProducto:{
       width: 175, 

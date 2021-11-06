@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, Button, View, FlatList, StyleSheet, Image , TouchableHighlight} from 'react-native';
+import { Text, Button, View, FlatList, StyleSheet, Image , TouchableHighlight, Linking} from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -30,6 +30,15 @@ function Root(){
 }
 
 export default function App() {
+  const ContactoPress = async() => {
+    await Linking.openURL("tel:+50360273809");
+  }
+  const MapaPress = async() => {
+    await Linking.openURL("https://goo.gl/maps/fBK6VN24oPV7RKgV9");
+  }
+  const AyudaPress = async() => {
+    await Linking.openURL("");
+  }
 
   return (
     <>
@@ -49,12 +58,11 @@ export default function App() {
             </Image>
           </View>
 
-          <View style={styles.BannerBtnAyuda}>
-            <TouchableOpacity onPress={() => alert('Rediccionamiento al apartado de ayuda')}>
-              <Text>Ayuda</Text>
+          <View style={styles.BannerBtnCarrito}>
+            <TouchableOpacity onPress={() => alert('Rediccionamiento al apartado de Carrito')}>
               <Image 
-                  source={require('./assets/img/Ayuda.png')}
-                  style={{width: 30, height: 30}}>
+                  source={require('./assets/img/carrito.png')}
+                  style={{width: 40, height: 40}}>
               </Image>
             </TouchableOpacity>
           </View>
@@ -71,19 +79,19 @@ export default function App() {
         <View style={styles.BannerInf}>
           <View style={{marginTop: '3%', flexDirection: 'row'}}>
 
-            <TouchableOpacity onPress={() => alert('Redireccionamiento a inicio')}>
-              <Text style={{color: 'black'}}>Inicio</Text>
+            <TouchableOpacity onPress={AyudaPress}>
+              <Text style={{color: 'black'}}>Ayuda</Text>
             </TouchableOpacity>
 
             <Text style={{color: 'black'}}>       |       </Text>
 
-            <TouchableOpacity onPress={() => alert('Redireccionamiento a contactos')}>
+            <TouchableOpacity onPress={ContactoPress}>
               <Text style={{color: 'black'}}>Contacto</Text>
             </TouchableOpacity>
 
             <Text style={{color: 'black'}}>       |       </Text>
 
-            <TouchableOpacity onPress={() => alert('Redireccionamiento a mapa de sitio')}>
+            <TouchableOpacity onPress={MapaPress}>
               <Text style={{color: 'black'}}>Mapa de sitio</Text>
             </TouchableOpacity>
           </View>
@@ -104,11 +112,12 @@ BannerSup:{
   height: 100,
   width: '100%',
   backgroundColor: '#8EDCB9',
+  justifyContent: 'flex-start'
 },
 BannerImageSpc:{
   flexBasis: 100,
   height: '100%',
-  margin: 20,
+  marginTop: 25,
 },
 BannerIcono:
 {
@@ -121,12 +130,13 @@ BannerEslogan:{
   height: '90%',
   marginTop: 20
 },
-BannerBtnAyuda:{
+BannerBtnCarrito:{
   flexBasis: '73%',
   height: 50, 
-  marginTop: 25,
+  marginTop: 30,
+  marginLeft: 30,
   flexWrap: 'wrap',
-  alignContent: 'flex-end',
+  alignSelf: 'center'
 },
 BannerInf:{
   flexDirection: 'row',
