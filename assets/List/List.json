@@ -5,7 +5,7 @@
            "Nombre":"Promociones",
            "Productos":[
                {
-                "Nombre": "Hamburguesa", 
+                "Nombre": "Promocion Hamburguesa", 
                 "Descripcion": "Deliciosa hamburguesa especial de la temporada, solo por tiempo limitado",
                 "Precio": 5.00, 
                 "Imagen": "https://www.titicupon.com/sites/default/files/buger_ajust_1.jpg"

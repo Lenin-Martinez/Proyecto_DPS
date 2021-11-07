@@ -60,5 +60,6 @@ Enlaces de interés
 ______________________________________________________________
 
 [Tablero en Trello] - https://trello.com/b/BiyFmUlg/segunda-fase-fase
-[Manual Técnico en la nube] - https://mega.nz/file/xwl0hQyL#Oc6QMQ4sYN_TfXPlIYhYflutKiwZOnG7_Z3uCE1sjDY
-[Video de funcionamiento] - https://mega.nz/file/VhFBGARA#z8Ss5MwgZtJLgLOdf6MHyhX-RhAXwn8SbYIDQFkRs18
+[Manual Técnico en la nube] - https://mega.nz/file/g4tm3RaQ#sJtny_eswl0IsR2xaYakjtxS17dzgeCg09wd4S3V6O4
+[Manual de Usuario en la nube] - https://mega.nz/file/lp1mSBJQ#bpBdPzUtKtaCDarUa3d2zP3jJ9y8QmNK4X7RgIQlELs
+

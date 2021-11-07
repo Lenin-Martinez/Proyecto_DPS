@@ -5,9 +5,9 @@ import { Value } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/core';
 import { auth } from '../firebase';
 
+function Inicio(){
 
-
-const Inicio = () => {
+  const [PedidoCompleto, setPedidoCompleto] = useState({"Estado":"Prueba","Resultado":"Efectivo"});
 
   const navigation = useNavigation();
   
@@ -18,6 +18,7 @@ const Inicio = () => {
     const [imagenCombo, setImagenCombo] = useState('');
     const [Cantidad, setCantidad] = useState(0);
     const [ElementosApi, setElementosApi] = useState([]);
+
     
     fetch('https://dps-api-fastfood-default-rtdb.firebaseio.com/Categorias/Promociones.json', {
            method: 'GET'

@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { Text, Button, View, FlatList, StyleSheet, Image , TouchableHighlight, Linking} from 'react-native';
+import { Text, Button, View, FlatList, StyleSheet, Modal, TextInput, Image, TouchableHighlight, Linking} from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { RectButton, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import { Value } from 'react-native-reanimated';
-import { Background } from '@react-navigation/elements';
-import Inicio from './Vistas/Inicio';
+import { useNavigation } from '@react-navigation/core';
+import { auth } from './firebase';
+import LoginScreen from './Vistas/Login';
+import Inicio from './Vistas/Inicio'
 import Entradas from './Vistas/Entradas';
 import Desayunos from './Vistas/Desayunos';
 import Almuerzos from './Vistas/Almuerzos';
 import Postres from './Vistas/Postres';
-import LoginScreen from './Vistas/Login';
+import VerManual from './assets/Manual/Manual';
 
 
 const Drawer = createDrawerNavigator();
@@ -37,8 +38,27 @@ export default function App() {
     await Linking.openURL("https://goo.gl/maps/fBK6VN24oPV7RKgV9");
   }
   const AyudaPress = async() => {
-    await Linking.openURL("");
+    await Linking.openURL("https://drive.google.com/file/d/1NVDilRPOvvLqMDUbLsoi4stAxb6DlapL/view?usp=sharing");
   }
+
+  const [VerModalCarrito, setVerModalCarrito] = useState(false);
+  const [VerModalAyuda, setVerModalAyuda] = useState(false);
+
+  const [Combo, setCombo] = useState('');
+  const [DescCombo, setDescCombo] = useState('');
+  const [PrecioCombo, setPrecioCombo] = useState('');
+  const [imagenCombo, setImagenCombo] = useState('');
+  const [Cantidad, setCantidad] = useState(0);
+
+  function CerrarModalCarrito(){
+    setVerModalCarrito(false)
+  }
+
+  function CerrarModalAyuda(){
+    setVerModalAyuda(false)
+  }
+
+
 
   return (
     <>
@@ -59,7 +79,7 @@ export default function App() {
           </View>
 
           <View style={styles.BannerBtnCarrito}>
-            <TouchableOpacity onPress={() => alert('Rediccionamiento al apartado de Carrito')}>
+            <TouchableOpacity onPress={() => setVerModalCarrito(true)}>
               <Image 
                   source={require('./assets/img/carrito.png')}
                   style={{width: 40, height: 40}}>
@@ -79,7 +99,7 @@ export default function App() {
         <View style={styles.BannerInf}>
           <View style={{marginTop: '3%', flexDirection: 'row'}}>
 
-            <TouchableOpacity onPress={AyudaPress}>
+            <TouchableOpacity onPress={() => setVerModalAyuda(true)}>
               <Text style={{color: 'black'}}>Ayuda</Text>
             </TouchableOpacity>
 
@@ -96,6 +116,90 @@ export default function App() {
             </TouchableOpacity>
           </View>
         </View>
+
+
+
+
+
+
+
+
+
+                   
+        <Modal
+            visible= {VerModalCarrito}>
+            <View style={styles.ViewModalSup}>
+            <View style={styles.ViewModalInf}>
+
+                <View style={styles.Encabezado}>
+                <TouchableHighlight onPress={() => CerrarModalCarrito()}>
+                    <Image
+                    source={require('./assets/img/flecha.png')}
+                    style={styles.flechaAtras}
+                    />
+                </TouchableHighlight>
+                </View>
+
+
+
+                <ScrollView>
+
+                  <View style={{flexDirection: 'row', flexWrap: 'wrap'}}> 
+                    <Text style={{fontSize: 35, fontWeight: 'bold', margin: 5}}>Mi pedido completo</Text>
+
+                    <Image
+                      source={require('./assets/img/LogoFF.png')}
+                      style={{width: 140, height: 100}}
+                    />
+                    
+                    <View>
+                      <Text style={{color: 'black', fontSize: 20}}>Descripcion de producto</Text>
+                      <Text style={{color: 'black', fontSize: 20}}>Cantidad: 999</Text>
+                      <Text style={{color: 'black', fontSize: 20}}>Total del Producto: 9999</Text>
+                    </View>
+                </View>
+
+
+
+                <View>
+                  <Text style={{fontSize: 40, fontWeight: 'bold', marginLeft: 25, color: '#17A05D', marginTop: 20}}>Total: $</Text>
+                  <Button title="Realizar pago del pedido"/>
+                </View>
+              </ScrollView>
+            </View>
+          </View>
+        </Modal>
+
+
+
+
+        
+
+
+
+                   
+        <Modal
+          visible= {VerModalAyuda}>
+            <View style={styles.ViewModalSup}>
+            <View style={styles.ViewModalInf}>
+
+              <View style={styles.Encabezado}>
+              <TouchableHighlight onPress={() => CerrarModalAyuda()}>
+                  <Image
+                  source={require('./assets/img/flecha.png')}
+                  style={styles.flechaAtras}
+                  />
+              </TouchableHighlight>
+              </View>
+
+              <ScrollView>
+                {VerManual()}
+              </ScrollView>
+            </View>
+          </View>
+        </Modal>
+
+
       </NavigationContainer>
      </> 
   );
@@ -158,6 +262,54 @@ TextoProducto:{
   width: 175, 
   marginBottom: 70,
 },
-
+ViewModalSup: {
+   width: '100%',
+    height: '100%',
+    flex:1,
+    backgroundColor: 'rgba(1,1,1,0.8)',
+    justifyContent: 'center',
+    alignItems:'center',
+},
+ViewModalInf:
+{
+    height:'90%',
+    width:'90%',
+    backgroundColor: '#fff',
+},
+Encabezado:
+{
+  height: 50,
+  width: '100%',
+  flexDirection: 'row',
+  alignItems: 'center',
+},
+flechaAtras:
+{
+  width: 35,
+  height: 35,
+  margin: 10,
+},
+button:{
+  backgroundColor: '#1AA15F',
+  width:'100%',
+  padding:10,
+  borderRadius:50,
+  alignSelf:'center',
+  textAlignVertical: 'center'
+},
+TextButton:{
+  color:'white',
+  fontWeight:'700',
+  fontSize: 12,
+},
+container:{
+backgroundColor: '#8EDCB9',
+borderTopLeftRadius: 35,
+borderTopRightRadius: 35,
+width: '100%',
+justifyContent:'space-around',
+flexDirection: 'row',
+alignItems:'center'
+},
 
 });

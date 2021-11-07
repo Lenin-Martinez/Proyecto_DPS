@@ -3,8 +3,10 @@ import { Text, Button, View, FlatList, StyleSheet, Modal, Image ,TouchableHighli
 import { RectButton, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Value } from 'react-native-reanimated';
 
-const Entradas = () => {
+function Entradas(){
 
+  
+  const [PedidoCompleto, setPedidoCompleto] = useState('hola');
 
 const [VerModal, setVerModal] = useState(false);
 const [Entrada, setEntrada] = useState('');
