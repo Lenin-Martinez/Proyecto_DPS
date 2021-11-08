@@ -59,7 +59,9 @@ Este proyecto está bajo la licencia Atribución-NoComercial-SinDerivador 4.0 In
 Enlaces de interés 
 ______________________________________________________________
 
-[Tablero en Trello] - https://trello.com/b/BiyFmUlg/segunda-fase-fase
+[Tablero en Trello] - https://trello.com/b/BiyFmUlg/tercera-fase
+
 [Manual Técnico en la nube] - https://mega.nz/file/g4tm3RaQ#sJtny_eswl0IsR2xaYakjtxS17dzgeCg09wd4S3V6O4
+
 [Manual de Usuario en la nube] - https://mega.nz/file/lp1mSBJQ#bpBdPzUtKtaCDarUa3d2zP3jJ9y8QmNK4X7RgIQlELs
 
